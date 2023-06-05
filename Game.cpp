@@ -16,10 +16,10 @@ Game::Game(QWidget* parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(800,600);
-    
+
     player = new Player();
     player->setPos(-150,200);
-    
+
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
@@ -36,4 +36,3 @@ Game::Game(QWidget* parent)
     QObject::connect(timer, SIGNAL(timeout()),player,SLOT(spawn()));
     timer->start(2000);
 }
-
