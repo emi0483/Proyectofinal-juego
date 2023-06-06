@@ -15,6 +15,7 @@ SOURCES += \
     Health.cpp \
     Player.cpp \
     Score.cpp \
+    escenas.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     Health.h \
     Player.h \
     Score.h \
+    escenas.h \
     mainwindow.h
 
 FORMS += \
@@ -36,4 +38,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    Sprites.qrc \
     sprites.qrc
+
+DISTFILES += \
+    sprites/BackGrounds/ciudad2.png
+
+QMAKE_CXXFLAGS += std=gnu ++11

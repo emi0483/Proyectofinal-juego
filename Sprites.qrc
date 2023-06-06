@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>sprites/BackGrounds/ciudad2.png</file>
+        <file>sprites/BackGrounds/game over.png</file>
+        <file>sprites/BackGrounds/intro juego.png</file>
+        <file>sprites/explocion/albondiga bomba.png</file>
+        <file>sprites/explocion/bomba espaguetti.png</file>
+        <file>sprites/explocion/explosion 1.png</file>
+        <file>sprites/explocion/explosion 2.png</file>
+        <file>sprites/explocion/explosion 3.png</file>
+        <file>sprites/explocion/explosion 4.png</file>
+        <file>sprites/explocion/explosion 5.png</file>
+        <file>sprites/explocion/explosion 6.png</file>
+        <file>sprites/explocion/istockphoto-1313501870-1024x1024.jpg</file>
+        <file>sprites/Historia/historia 1.png</file>
+        <file>sprites/Historia/historia 3.png</file>
+        <file>sprites/Historia/historia 4.png</file>
+        <file>sprites/Historia/historia.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>sprites/MC/evoluciion 2.png</file>
+        <file>sprites/MC/evolucion 4.png</file>
+        <file>sprites/MC/inicial.png</file>
+    </qresource>
+</RCC>

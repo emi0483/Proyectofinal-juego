@@ -3,10 +3,12 @@
 #include <QKeyEvent>
 #include "Bullet.h"
 #include "Enemy.h"
+#include <QPainter>
 
-Player::Player(QGraphicsItem* parent): QGraphicsPixmapItem(parent)
+Player::Player(const Qstring &filename, QGraphicsItem* parent);
 {
     setPixmap(QPixmap(":/imagenes/sprites/MC/inicial.png"));
+    mFilename= filename;
 }
 
 void Player::keyPressEvent(QKeyEvent *event)
@@ -36,3 +38,4 @@ void Player::spawn()
     Enemy* enemy = new Enemy();
     scene()->addItem(enemy);
 }
+
