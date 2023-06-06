@@ -51,7 +51,14 @@ public:
         }
     }
 };
-
+class Object : public QGraphicsEllipseItem
+{
+public:
+    Object() : QGraphicsEllipseItem(-30, -30, 60, 60) {
+        setPos(200, 200);
+        setBrush(Qt::blue);
+    }
+};
 }
 void Player::spawn()
 {
