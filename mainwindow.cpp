@@ -37,4 +37,18 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
 
+    QMainWindow mainWindow;
+
+    QGraphicsView view;
+    view.setRenderHint(QPainter::Antialiasing);
+    view.setScene(new Scene(&mainWindow));
+    mainWindow.setCentralWidget(&view);
+
+    mainWindow.show();
+
+    return app.exec();
+}
