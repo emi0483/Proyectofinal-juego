@@ -22,3 +22,54 @@ Escenas::Escenas(int argc, char *argv[])
     w.show();
     return app.exec()
 }
+
+class Scene : public QGraphicsScene
+{
+public:
+    Scene(QMainWindow* mainWindow) : QGraphicsScene(mainWindow), mainWindow(mainWindow) {
+        player = new Player();
+        addItem(player);
+
+        object = new Object();
+        addItem(object);
+    }
+
+    void keyPressEvent(QKeyEvent* event) override {
+        player->keyPressEvent(event);
+        if (player->collidesWithItem(object)) {
+            ChangeScene();
+        }
+    }
+class Scene : public QGraphicsScene
+{
+public:
+    Scene(QMainWindow* mainWindow) : QGraphicsScene(mainWindow), mainWindow(mainWindow) {
+        player = new Player();
+        addItem(player);
+
+        object = new Object();
+        addItem(object);
+    }
+
+    void keyPressEvent(QKeyEvent* event) override {
+        player->keyPressEvent(event);
+        if (player->collidesWithItem(object)) {
+            ChangeScene();
+        }
+    }
+
+    void ChangeScene() {
+        QGraphicsView* view = mainWindow->centralWidget()->findChild<QGraphicsView*>();
+        QGraphicsScene* newScene = new QGraphicsScene(mainWindow);
+        view->setScene(newScene);
+        // Agregar lógica para construir la nueva escena según tus necesidades
+        // ...
+
+        // Liberar memoria de la escena anterior
+        delete this;
+    }
+private:
+    Player* player;
+    Object* object;
+    QMainWindow* mainWindow;
+};
