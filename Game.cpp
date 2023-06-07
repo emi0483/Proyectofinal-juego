@@ -3,14 +3,13 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <QTimer>
-#include <QMediaPlayer>
 #include <QImage>
 
 Game::Game(QWidget* parent)
 {
     scene=new QGraphicsScene();
     scene->setSceneRect(0,0,800,600);
-    //setBackgroundBrush(QBrush(":/imagenes/sprites/BackGrounds/ciudad2.png"));
+    setBackgroundBrush(QBrush(QImage(":/images/sprites/background/cielo.png")));
 
     setScene(scene);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -18,7 +17,7 @@ Game::Game(QWidget* parent)
     setFixedSize(800,600);
 
     player = new Player();
-    player->setPos(-150,200);
+    player->setPos(150,200);
 
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
@@ -35,4 +34,5 @@ Game::Game(QWidget* parent)
     QTimer* timer = new QTimer();
     QObject::connect(timer, SIGNAL(timeout()),player,SLOT(spawn()));
     timer->start(2000);
+
 }

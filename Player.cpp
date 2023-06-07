@@ -1,68 +1,49 @@
-#include <QGraphicsScene>
 #include "Player.h"
+#include <QGraphicsScene>
 #include <QKeyEvent>
-#include "Bullet.h"
-#include "Enemy.h"
-#include <QPainter>
 
-Player::Player(const Qstring &filename, QGraphicsItem* parent);
+Player::Player(QGraphicsItem* parent) : QGraphicsPixmapItem(parent),
+    m_colision_izquierda(false),
+    m_colision_derecha(false),
+    m_colision_arriba(false),
+    m_colision_abajo(false)
 {
-    setPixmap(QPixmap(":/imagenes/sprites/MC/inicial.png"));
-    mFilename= filename;
+    setPixmap(QPixmap(":/images/sprites/personajes/inicial.png"));
 }
 
-void Player::keyPressEvent(QKeyEvent *event)
+void Player::keyPressEvent(QKeyEvent* event)
 {
-    if (event->key() == Qt::Key_A){
-        if(pos().x()>-170)  setPos(x()-10,y());
-    }
-    else if (event->key() == Qt::Key_D){
-        if (pos().x()<570) setPos(x()+10,y());
-    }
-    else if (event->key() == Qt::Key_W){
-        if (pos().y()>100) setPos(x(),y()-10);
-
-    }
-    else if (event->key() == Qt::Key_S){
-        if (pos().y()<320) setPos(x(),y()+10);
-    }
-    else if (event->key() == Qt::Key_Space){
-        Bullet* bullet = new Bullet();
-        bullet->setPos(x(),y()); //se volvió loco despues de añadir los graficos, tocó restarle a cada posicion en ensayo y error
-        scene()->addItem(bullet);
-
-    }
-class Playerelipse : public QGraphicsEllipseItem
-{
-public:
-    Player() : QGraphicsEllipseItem(-10, -10, 20, 20) {
-        setBrush(Qt::red);
-    }
-
-    void keyPressEvent(QKeyEvent* event) override {
-        if (event->key() == Qt::Key_Right) {
-            setPos(x() + 10, y());
-        } else if (event->key() == Qt::Key_Left) {
+    if (event->key() == Qt::Key_A) {
+        if (!m_colision_izquierda)
             setPos(x() - 10, y());
-        } else if (event->key() == Qt::Key_Up) {
+    } else if (event->key() == Qt::Key_D) {
+        if (!m_colision_derecha)
+            setPos(x() + 10, y());
+    } else if (event->key() == Qt::Key_W) {
+        if (!m_colision_arriba)
             setPos(x(), y() - 10);
-        } else if (event->key() == Qt::Key_Down) {
+    } else if (event->key() == Qt::Key_S) {
+        if (!m_colision_abajo)
             setPos(x(), y() + 10);
-        }
     }
-};
-class Object : public QGraphicsEllipseItem
-{
-public:
-    Object() : QGraphicsEllipseItem(-30, -30, 60, 60) {
-        setPos(200, 200);
-        setBrush(Qt::blue);
-    }
-};
-}
-void Player::spawn()
-{
-    Enemy* enemy = new Enemy();
-    scene()->addItem(enemy);
 }
 
+void Player::setColisionIzquierda(bool colision)
+{
+    m_colision_izquierda = colision;
+}
+
+void Player::setColisionDerecha(bool colision)
+{
+    m_colision_derecha = colision;
+}
+
+void Player::setColisionArriba(bool colision)
+{
+    m_colision_arriba = colision;
+}
+
+void Player::setColisionAbajo(bool colision)
+{
+    m_colision_abajo = colision;
+}
